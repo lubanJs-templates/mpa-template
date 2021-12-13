@@ -20,3 +20,69 @@ mobile[dist/mobile]: 移动端打包后代码
 src/include: 公共html代码，用于模块化
 src/libs: 第三方依赖包
 ```
+## 功能
+- [x] 代码压缩/格式化
+- [x] less
+- [x] 图片压缩
+- [x] 开发环境支持代理
+- [x] html 模块化
+- [x] build hash命名
+- [x] 开发环境热更新
+- [x] 开发环境防缓存
+- [x] 移动端pxtovw
+
+## FAQ
+#### pc源代码和移动端源代码路径？
+pc: `src` 移动端：`srcMobile`
+
+#### 如何配置移动端输出路径？
+修改`build/config.js`
+```js
+module.exports = {
+  dist: './dist',
+  mobileDist: './dist/mobile', // 移动端build后地址
+}
+
+```
+#### 开发环境如何配置代理？
+pc环境在`build/gulp.dec.js`，移动端在`build/mobile.gulp.dev.js`,在文件中找到如下配置：
+```js
+// 服务器函数
+gulp.task('server', async () => {
+  Connect.server({
+    root: dist, // 根目录
+    // ip:'192.168.11.62',//默认localhost:8080
+    livereload: true, // 自动更新
+    port: 8080, // 端口
+    middleware: function (connect, opt) {
+      return [
+        // Proxy('/api', {
+        //   target: 'http://localhost:8080',
+        //   changeOrigin: true
+        // })
+      ]
+    }
+  })
+})
+```
+#### 移动端开发如何配合pxtovw修改设计稿大小?
+在`build/mobile.gulp.dev.js`,`build/mobile.gulp.prod.js`中找到如下配置：
+```js
+// css
+function css () {
+  return gulp.src(`${root}/css/**`)
+    .pipe(Less()) // 编译less
+    .pipe(Postcss([
+      Autoprefixer(),
+      Pxtoviewport({
+        viewportWidth: 375, // 修改设计稿大小
+        viewportUnit: 'vw'
+      })
+    ]))
+    .pipe(gulp.dest(dist + '/css')) // 当前对应css文件
+    .pipe(Connect.reload())// 更新
+}
+```
+具体使用参考[postcss-px-to-viewport](https://github.com/evrone/postcss-px-to-viewport/blob/master/README_CN.md)文档
+
+## 欢迎issue
