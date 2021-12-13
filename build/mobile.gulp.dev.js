@@ -43,7 +43,7 @@ function html () {
 
 // css
 function css () {
-  return gulp.src(`${root}/css/**`)
+  return gulp.src([`${root}/css/*.css`, `${root}/css/*.less`])
     .pipe(Less()) // 编译less
     .pipe(Postcss([
       Autoprefixer(),

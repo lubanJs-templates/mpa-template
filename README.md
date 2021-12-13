@@ -7,6 +7,7 @@
     npm run dev:m // 启动移动端开发环境
     npm run build // pc端生产环境打包
     npm run build:m // 移动端生产环境打包
+    npm run build:all // 打包pc端和移动端
     npm run minImg // 图片文件压缩
     npm run fix // js代码standard标准格式化
 ```

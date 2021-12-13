@@ -6,6 +6,7 @@
     "dev:m": "NODE_ENV=dev-m gulp dev",
     "build": "NODE_ENV=prod gulp build",
     "build:m": "NODE_ENV=prod-m gulp build",
+    "build:all": "npm run build && npm run build:m",
     "minImg": "gulp minImg",
     "fix": "standard --fix"
   },
