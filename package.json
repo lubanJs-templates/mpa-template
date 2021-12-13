@@ -1,0 +1,54 @@
+{
+  "private": true,
+  "scripts": {
+    "start": "npm run dev",
+    "dev": "NODE_ENV=dev gulp dev",
+    "dev:m": "NODE_ENV=dev-m gulp dev",
+    "build": "NODE_ENV=prod gulp build",
+    "build:m": "NODE_ENV=prod-m gulp build",
+    "minImg": "gulp minImg",
+    "fix": "standard --fix"
+  },
+  "standard": {
+    "ignore": [
+      "src/libs/",
+      "srcMobile/libs/",
+      "build",
+      "dist",
+      "mobile",
+      "gulpfile.js"
+    ]
+  },
+  "browserslist": [
+    "last 1 version",
+    "> 1%",
+    "IE 10"
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
+    "autoprefixer": "^10.4.0",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-cache": "^1.1.3",
+    "gulp-clean": "^0.4.0",
+    "gulp-connect": "^5.7.0",
+    "gulp-file-include": "^2.0.1",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-jshint": "^2.1.0",
+    "gulp-less": "^5.0.0",
+    "gulp-md5-plus": "^1.0.3",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-postcss": "^9.0.1",
+    "gulp-uglify": "^3.0.2",
+    "gulp-util": "^3.0.8",
+    "http-proxy-middleware": "^0.19.1",
+    "http-server": "^0.11.1",
+    "jshint": "^2.10.2",
+    "jsonfile": "^5.0.0",
+    "postcss": "^8.4.4",
+    "postcss-px-to-viewport": "^1.1.1",
+    "standard": "^16.0.4"
+  }
+}
