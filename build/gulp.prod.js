@@ -5,7 +5,6 @@ const Babel = require('gulp-babel')
 // css
 const Minifycss = require('gulp-minify-css') // 压缩css
 const Less = require('gulp-less') // 编译less
-const Autoprefixer = require('autoprefixer');
 const Postcss = require('gulp-postcss');
 // html
 const MinifyHtml = require('gulp-htmlmin') // 压缩html
@@ -45,7 +44,7 @@ function html () {
 function css () {
   return gulp.src(`${root}/css/*`)
     .pipe(Less()) // 编译less
-    .pipe(Postcss([Autoprefixer()]))
+    .pipe(Postcss())
     .pipe(Minifycss({ // 压缩css
       // 类型：Boolean 默认：true [是否开启高级优化（合并选择器等）]
       advanced: true,

@@ -6,7 +6,6 @@ const Proxy = require('http-proxy-middleware')
 
 // css
 const Less = require('gulp-less') // 编译less
-const Autoprefixer = require('autoprefixer');
 const Postcss = require('gulp-postcss');
 
 // html
@@ -46,7 +45,7 @@ function html () {
 function css () {
   return gulp.src([`${root}/css/*.css`, `${root}/css/*.less`])
     .pipe(Less()) // 编译less
-    .pipe(Postcss([Autoprefixer()]))
+    .pipe(Postcss())
     .pipe(gulp.dest(dist + '/css')) // 当前对应css文件
     .pipe(Connect.reload())// 更新
 }
@@ -77,7 +76,7 @@ function libs () {
 // watch
 
 gulp.task('watch', async () => {
-  gulp.watch(`${root}/*.html`, gulp.series('clear', html)) // 监听HTML变化
+  gulp.watch(`${root}/**/*.html`, gulp.series('clear', html)) // 监听HTML变化
   gulp.watch(`${root}/js/**`, gulp.series('clear', js)) // 监听js变化
   gulp.watch(`${root}/css/**`, gulp.series('clear', css)) // 监听css变化
   gulp.watch(`${root}/images/**`, gulp.series('clear', image)) // 监听image变化
